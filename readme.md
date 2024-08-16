@@ -1,4 +1,6 @@
+## 效果图
 
+![Alt Text](https://github.com/SuceV587/awesomewm-dot/blob/main/preview/rdm1.png?raw=true)
 
 
 

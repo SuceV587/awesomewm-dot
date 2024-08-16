@@ -18,8 +18,8 @@ M.contributions = gfs.get_configuration_dir() .. "/assets/contributions.jpg"
 
 --weather widget config
 --使用和风天气:https://www.qweather.com/
-M.weather_app_id = '5ca9c851a9d44819961749d9909e4f3d'
-M.weather_city_id = '101250111'
+M.weather_app_id = ''
+M.weather_city_id = ''
 M.weather_city_name=' 长沙天心'
 
 
