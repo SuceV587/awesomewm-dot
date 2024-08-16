@@ -49,7 +49,6 @@ M_clocl_sys = {
       widget = wibox.widget.imagebox
     }
     -- 更新钟表
-
     utils.run.newtimer("update_clock", 1, function()
         local img = M_clocl_sys.make_clock_canvas()
         imagebox:set_image(img)
@@ -157,7 +156,7 @@ M_clocl_sys = {
     --左边是一个cpu使用组件
     local top_widget = wibox.widget {
       spacing = utils.ui.dpiSize(2),
-      forced_height = utils.ui.dpiSize(90),
+      forced_height = utils.ui.dpiSize(80),
       layout = wibox.layout.flex.horizontal
     }
 
@@ -177,7 +176,7 @@ M_clocl_sys = {
     local main_wrap = wibox.widget {
       wibox.widget {
         syste_info_widget,
-        margins = utils.ui.dpiSize(10),
+        margins = utils.ui.dpiSize(8),
         widget = wibox.container.margin,
       },
       bg     = "#ffffff",
@@ -199,7 +198,7 @@ M_clocl_sys = {
       },
       max_value = 100,
       value = 50,
-      thickness = utils.ui.dpiSize(15),
+      thickness = utils.ui.dpiSize(12),
       start_angle = math.pi * 1.5,
       rounded_edge = true,
       bg = '#dddddd',
@@ -233,7 +232,7 @@ M_clocl_sys = {
       },
       max_value = 100,
       value = 50,
-      thickness = utils.ui.dpiSize(15),
+      thickness = utils.ui.dpiSize(12),
       start_angle = math.pi * 1.5,
       rounded_edge = true,
       bg = '#dddddd',
@@ -266,7 +265,7 @@ M_clocl_sys = {
     local disk_progressbar = wibox.widget {
       max_value = 100,
       value = 90,
-      forced_height = utils.ui.dpiSize(12),
+      forced_height = utils.ui.dpiSize(10),
       forced_width = utils.ui.dpiSize(200),
       shape = utils.ui.rounded_rect(utils.ui.dpiSize(12)),
       bar_shape = utils.ui.rounded_rect(utils.ui.dpiSize(12)),
@@ -288,7 +287,7 @@ M_clocl_sys = {
     disk_widget:add(disk_text)
 
     local update_interval = 10
-    local disk_idle_script = [[sh -c "df -h | grep '/dev/nvme0n1p5'"]]
+    local disk_idle_script = [[sh -c "df -h | grep '/dev/nvme0n1p4'"]]
 
     -- Periodically get disk info
     awful.widget.watch(disk_idle_script, update_interval, function(widget, stdout)

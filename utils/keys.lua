@@ -8,6 +8,15 @@ M_keys        = {
 
     return M_keys.open_once(edeg_clss, edeg_commond)
   end,
+
+
+  open_chrome = function()
+    local chrome_command = '/usr/bin/google-chrome-stable %U'
+    local chrome_class = { 'google-chrome', 'Google-chrome' }
+
+    return M_keys.open_once(chrome_class, chrome_command)
+  end,
+
   open_alacritty = function()
     local exec_command = 'alacritty'
     local client_class = { "Alacritty", "Alacritty" }

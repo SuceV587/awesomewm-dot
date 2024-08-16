@@ -6,7 +6,7 @@ local ICONS = {
   normal = {
     high = "墳",
     low = "奄",
-    medium = "",
+    medium = "  ",
     mute = "婢",
   },
 }
@@ -40,7 +40,7 @@ return function()
     -- font = "JetBrains Mono Nerd Font Bold 13",
     align = "center",
     valign = "center",
-    forced_width = utils.ui.dpiSize(18),
+    forced_width = utils.ui.dpiSize(22),
     widget = wibox.widget.textbox,
   })
 

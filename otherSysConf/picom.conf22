@@ -1,0 +1,249 @@
+
+
+
+#################################
+#           Animations         #
+
+# !These animations WILL NOT work correctly for any other wm other than phyOS-dwm fork!
+
+# fly-in: Windows fly in from random directions to the screen
+# maximize: Windows pop from center of the screen to their respective positions
+# minimize: Windows minimize from their position to the center of the screen
+# slide-in-center: Windows move from upper-center of the screen to their respective positions
+# slide-out-center: Windows move to the upper-center of the screen
+# slide-left: Windows are created from the right-most window position and slide leftwards
+# slide right: Windows are created from the left-most window position and slide rightwards
+# slide-down: Windows are moved from the top of the screen and slide downward
+# slide-up: Windows are moved from their position to top of the screen
+# squeeze: Windows are either closed or created to/from their center y-position (the animation is similar to a blinking eye)
+# squeeze-bottom: Similar to squeeze, but the animation starts from bottom-most y-position
+# zoom: Windows are either created or destroyed from/to their center (not the screen center)
+
+#################################
+
+#enable or disable animations
+animations = true;
+#change animation speed of windows in current tag e.g open window in current tag
+animation-stiffness-in-tag = 125;
+#change animation speed of windows when tag changes
+animation-stiffness-tag-change = 90.0;
+
+animation-window-mass = 0.4;
+animation-dampening = 15;
+animation-clamping = false;
+
+#open windows
+animation-for-open-window = "zoom";
+#minimize or close windows
+animation-for-unmap-window = "squeeze";
+#popup windows
+animation-for-transient-window = "slide-up"; #available options: slide-up, slide-down, slide-left, slide-right, squeeze, squeeze-bottom, zoom
+
+#set animation for windows being transitioned out while changings tags
+animation-for-prev-tag = "slide-left";
+#enables fading for windows being transitioned out while changings tags
+enable-fading-prev-tag = true;
+
+#set animation for windows being transitioned in while changings tags
+animation-for-next-tag = "slide-left";
+#enables fading for windows being transitioned in while changings tags
+enable-fading-next-tag = true;
+
+animation-exclude = [
+    "class_g = 'fcitx'",
+    "class_g = 'flameshot'",
+    "class_g = 'Dunst'",
+    "class_g = 'Rofi'",
+    "class_g = 'jetbrains-datagrip'",
+    "WM_CLASS@:s *= 'screenkey'",
+
+
+    "class_g ?= 'wine'",
+    "class_g ?= 'wechat.ext'",
+    "window_type *= 'dock'",
+    "window_type = 'menu'",
+    "window_type = 'tooltip'",
+    "window_type = 'popup_menu'",
+    "window_type = 'dropdown_menu'",
+];
+
+
+# 窗户圆角的处理
+corner-radius = 30;
+detect-rounded-corners = true;
+rounded-corners-exclude = [
+  "name = 'Eww - tasks'",
+  # "class_g ?= 'rofi'",
+  "class_g ?= 'peek'",
+  "class_g ?= 'eww_tasks'",
+  "window_type *= 'dock'",
+  "window_type = 'menu'",
+  "window_type = 'tooltip'",
+  "window_type = 'popup_menu'",
+  "window_type = 'dropdown_menu'",
+
+  "class_g = 'cairo-dock'",
+  "class_g = 'Cairo-dock'",
+  "class_g = 'com.alibabainc.dingtalk' "
+
+];
+
+
+# ░█▀▀░█░█░█▀█░█▀▄░█▀█░█░█
+# ░▀▀█░█▀█░█▀█░█░█░█░█░█▄█
+# ░▀▀▀░▀░▀░▀░▀░▀▀░░▀▀▀░▀░▀
+shadow = true;
+shadow-radius = 36;
+shadow-opacity = 0.2;
+shadow-offset-x = -12;
+shadow-offset-y = -6;
+shadow-color = "#000000";
+xinerama-shadow-crop = true;
+shadow-ignore-shaped = false;
+shadow-exclude = [
+  "class_g = 'slop'",
+  "class_g = 'awesome'",
+  "class_g = 'plank'",
+  "class_g = 'cairo-dock'",
+  "class_g = 'Cairo-dock'",
+  "class_g ?= 'peek'",
+  "class_g ?= 'wine'",
+  "class_g ?= 'wechat.ext'",
+  "name = 'Notification'",
+  "class_g = 'Conky'",
+  "class_g = 'Rofi'",
+  "class_g ?= 'Notify-osd'",
+  "class_g = 'Cairo-clock'",
+  "class_g = 'slop'",
+  "class_g = 'Firefox' && argb",
+  "_GTK_FRAME_EXTENTS@:c",
+  "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'",
+  "_COMPTON_SHADOW@:32c = 0",
+  "_NET_WM_WINDOW_TYPE@:a *= 'SPLASH'",
+  # "_NET_WM_WINDOW_TYPE@:a *= 'NOTIFICATION'",
+  # "window_type *= 'menu'",
+  "window_type = 'utility'",
+  "window_type = 'dropdown_menu'",
+  # "window_type = 'popup_menu'"
+  "window_type = 'utility'",
+];
+
+# ░█▀▀░█▀█░█▀▄░▀█▀░█▀█░█▀▀
+# ░█▀▀░█▀█░█░█░░█░░█░█░█░█
+# ░▀░░░▀░▀░▀▀░░▀▀▀░▀░▀░▀▀▀
+
+fading = true;
+fade-in-step = 0.03;
+fade-out-step = 0.03;
+fade-delta = 3;
+
+no-fading-openclose = false
+no-fading-destroyed-argb = true
+
+fade-exclude = [
+  "class_g = 'slop'"   # maim
+]
+
+
+# ░█▀█░█▀█░█▀█░█▀▀░▀█▀░▀█▀░█░█
+# ░█░█░█▀▀░█▀█░█░░░░█░░░█░░░█░
+# ░▀▀▀░▀░░░▀░▀░▀▀▀░▀▀▀░░▀░░░▀░
+active-opacity = 1.0;
+inactive-opacity = 1.0;
+frame-opacity = 1.0;
+inactive-dim = 0.0;
+
+# 设置透明度规则
+opacity-rule = [
+    "95:class_g *?= 'Rofi'",
+    "95:class_g *?= 'Alacritty'",
+];
+
+focus-exclude = [
+  # "class_g ?= 'rofi'",
+  # '_NET_WM_NAME@:s = "rofi"',
+  # "class_g ?= 'slop'",
+  # "class_g ?= 'Steam'",
+  # "_NET_WM_WINDOW_TYPE@:a *= 'MENU'",
+  # "window_type *= 'menu'",
+  # "window_type = 'utility'",
+  # "window_type = 'dropdown_menu'",
+  # "window_type = 'popup_menu'",
+
+      "class_g = 'Cairo-clock'",
+      "class_g ?= 'rofi'",
+      "class_g ?= 'slop'",
+      "class_g ?= 'Steam'"
+];
+
+
+# 注意blur特效是实验性功能,必须加上参数 "--experimental-backend" 才会生效
+# 如果启用非线性动画，也必须启用该参数
+# ░█▀▄░█░░░█░█░█▀▄░█▀▄░▀█▀░█▀█░█▀▀
+# ░█▀▄░█░░░█░█░█▀▄░█▀▄░░█░░█░█░█░█
+# ░▀▀░░▀▀▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀
+
+blur-background-exclude = [
+  # "window_type = 'dock'",
+  "window_type = 'desktop'",
+  "window_type = 'tooltip'",
+  "window_type = 'notification'",
+  # "class_g = 'awesome'",
+  # "class_g = 'Alacritty'",
+  # "name = 'rofi'"
+  "window_type = 'dialog'",
+  "window_type = 'popup_menu'",
+  "window_type = 'dropdown_menu'",
+
+  "window_type *= 'dock'",
+  "window_type = 'menu'",
+  "window_type = 'tooltip'",
+  "window_type = 'popup_menu'",
+  "window_type = 'dropdown_menu'",
+  # "window_type = 'utility'"
+  "class_g = 'Ulauncher'",
+  "class_g = 'ulauncher'",
+  "class_g = 'slop'",
+
+  "class_g ?= 'peek'",
+];
+blur-method = "dual_kawase";
+blur-strength = 80;
+blur-kern = "3x3box";
+
+
+# ░█▀▀░█▀▀░█▀█░█▀▀░█▀▄░█▀█░█░░░░░█▀▀░█▀▀░▀█▀░▀█▀░▀█▀░█▀█░█▀▀░█▀▀
+# ░█░█░█▀▀░█░█░█▀▀░█▀▄░█▀█░█░░░░░▀▀█░█▀▀░░█░░░█░░░█░░█░█░█░█░▀▀█
+# ░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀░▀░▀▀▀░░░▀▀▀░▀▀▀░░▀░░░▀░░▀▀▀░▀░▀░▀▀▀░▀▀▀
+
+
+wintypes:
+{
+  tooltip = { fade = true; full-shadow = true; focus = true; blur-background = false;};
+  menu = { full-shadow = true;};
+  popup_menu =  { full-shadow = true;};
+  utility =  {full-shadow = true;};
+  toolbar = {full-shadow = true;};
+  normal = {full-shadow = true;};
+  notification = {full-shadow = true;};
+  dialog = {full-shadow = true};
+  dock = {full-shadow = true;};
+  dropdown_menu = { full-shadow = true;};
+};
+
+
+
+
+# 启用glx后端，需要显卡支持
+# backend = "glx";
+
+backend = "glx";
+# backend = "glx";
+glx-no-stencil = false;
+glx-copy-from-front = false;
+use-damage = true;
+vsync = true;
+detect-rounded-corners = true;
+detect-client-leader = true;
+detect-transient = true;
+unredir-if-possible = true;

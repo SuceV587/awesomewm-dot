@@ -11,13 +11,11 @@ local dosktop_util    = require("widgets.dockCenter.utils.desktop")
 --这里放置常用的软件,组件
 M_usualClient         = {
   init = function()
-    --创建上下两个部分
-    local widget_main = wibox.layout.fixed.vertical()
-    widget_main.spacing = utils.ui.dpiSize(5)
+
     local widget_margin_main = wibox.widget {
       -- forced_width  = utils.ui.dpiSize(200),
-      forced_height = utils.ui.dpiSize(190),
-      margins       = utils.ui.dpiSize(20),
+      forced_height = utils.ui.dpiSize(200),
+      margins       = utils.ui.dpiSize(15),
       widget        = wibox.container.margin,
     }
 
@@ -34,7 +32,7 @@ M_usualClient         = {
       orientation     = "vertical",
       homogeneous     = true,
       expand          = true,
-      spacing         = utils.ui.dpiSize(15),
+      spacing         = utils.ui.dpiSize(10),
       layout          = wibox.layout.grid
     }
 
@@ -42,45 +40,26 @@ M_usualClient         = {
     M_usualClient.loop_usual_client(rows_grid)
     widget_margin_main:set_widget(rows_grid)
     widget_bg_main:set_widget(widget_margin_main)
-    widget_main:add(widget_bg_main)
-
-    --创建下面部分,居中显示标题,加上背景阴影
-    local widget_title = wibox.widget {
-      wibox.widget {
-        wibox.widget {
-          wibox.widget {
-            text = "常用软件",
-            font = beautiful.jetBrains .. '10',
-            widget = wibox.widget.textbox,
-          },
-          margins = 2,
-          widget = wibox.container.margin,
-        },
-        fg = '#ffffff',
-        shape = utils.ui.rounded_rect(utils.ui.dpiSize(2)),
-        widget = wibox.container.background,
-      },
-      valign = "center",
-      halign = "center",
-      widget = wibox.container.place
-    }
-    widget_main:add(widget_title)
-
-    return widget_main
+ 
+  
+    return widget_bg_main
   end,
   loop_usual_client = function(grid_widget)
     local usual = specity_desktop.get_usual_client()
     --循环当前所有的软件,如果是常用的软件,就放到网格布局里面,并且添加点击事件
     for _, c in ipairs(usual) do
-      local default_icon = c.icon_path
-      if c.icon_path == nil then
-        local name =c.Name:lower()
+      local icon_name = c.Name:lower()
+      icon_name = string.gsub(icon_name, " ", "-")
+      local default_icon = dosktop_util.lookup_icon({ icon = icon_name })
+      if default_icon == nil then
+        default_icon = c.icon_path
+       
         naughty.notify({
           preset = naughty.config.presets.critical,
           title = "Oops, an error happened!",
-          text = "没有找到图标" .. name,
+          text = "没有找到图标" .. icon_name,
         })
-        default_icon = dosktop_util.lookup_icon({ icon = c.Name:lower() })
+      
       end
 
       local widget = wibox.widget {

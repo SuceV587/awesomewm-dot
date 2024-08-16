@@ -7,9 +7,10 @@ local M_log = {
       message = tostring(message)
     end
 
-
     local file = io.open(os.getenv("HOME") .. "/.config/awesome/debug.log", "a")
     file:write(message .. "\n")
     file:close()
   end
 }
+
+return M_log

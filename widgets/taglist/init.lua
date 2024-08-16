@@ -6,8 +6,8 @@ local utils     = require("utils")
 local beautiful = require("beautiful")
 
 M_tag_list      = {
-  init = function()
-    local talg_list_main = M_tag_list.loopTagList()
+  init = function(s)
+    local talg_list_main = M_tag_list.loopTagList(s)
     local widget_wrap = wibox.widget {
       talg_list_main,
       valign       = 'center',
@@ -17,13 +17,13 @@ M_tag_list      = {
     }
     return widget_wrap
   end,
-  loopTagList = function()
+  loopTagList = function(s)
     local widget_wrap = wibox.widget {
       spacing = utils.ui.dpiSize(3),
       layout = wibox.layout.flex.horizontal
     }
     widget_wrap:reset()
-    for _, t in ipairs(awful.screen.focused().tags) do
+    for _, t in ipairs(s.tags) do
       local widget_one = wibox.widget {
         wibox.widget {
           text   = " ",

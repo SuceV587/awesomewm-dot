@@ -157,7 +157,7 @@ M_clocl_sys = {
     --左边是一个cpu使用组件
     local top_widget = wibox.widget {
       spacing = utils.ui.dpiSize(2),
-      forced_height = utils.ui.dpiSize(72),
+      forced_height = utils.ui.dpiSize(90),
       layout = wibox.layout.flex.horizontal
     }
 
@@ -177,7 +177,7 @@ M_clocl_sys = {
     local main_wrap = wibox.widget {
       wibox.widget {
         syste_info_widget,
-        margins = utils.ui.dpiSize(6),
+        margins = utils.ui.dpiSize(10),
         widget = wibox.container.margin,
       },
       bg     = "#ffffff",

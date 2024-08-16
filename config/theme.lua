@@ -25,22 +25,21 @@ theme.white = "#D3D3D3"
 theme.puple = "#A066D3"
 theme.light_yellow = "#eddbb5"
 theme.light_green = "#5bd2a6"
-theme.ligth_blue = '#a8cfff'
-
+theme.ligth_blue = "#a8cfff"
 
 theme.arcchart_color = "#5bd2a6"
 theme.arcchart_bg = "#5bd2a6"
 -- bg
 theme.bg_normal = theme.transparent
 -- theme.bg_focus = theme.green
-theme.bg_focus = '#ffffff99'
+theme.bg_focus = "#ffffff99"
 theme.bg_urgent = theme.red
 
 -- fg
 theme.fg_normal = theme.white
 -- theme.fg_focus = theme.yellow
 
-theme.fg_focus = '#000'
+theme.fg_focus = "#000"
 theme.fg_urgent = theme.white
 
 -- spacing
@@ -61,18 +60,18 @@ theme.border_width = dpi(1)
 theme.border_radius = dpi(13)
 
 -- theme.border_focus = theme.puple
-theme.border_focus = '#3D59AB'
+theme.border_focus = "#3D59AB"
 -- theme.border_normal = '#ffffff'
 
 -- 定义新的阴影效果
 theme.focused_shadow = {
-  offset = 20,
-  blur_radius = 100,
-  color = "#000000",
-  opacity = 0.8,
-  shape = function(cr, w, h)
-    gears.shape.rounded_rect(cr, w, h, 5)
-  end
+	offset = 20,
+	blur_radius = 100,
+	color = "#000000",
+	opacity = 0.8,
+	shape = function(cr, w, h)
+		gears.shape.rounded_rect(cr, w, h, 5)
+	end,
 }
 
 -- taglist
@@ -83,8 +82,7 @@ theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_fg_occupied = theme.green
 
 --tasklist
-theme.tasklist_bg_focus = '#ffffff'
-
+theme.tasklist_bg_focus = "#ffffff"
 
 -- wallpaper
 theme.wallpaper = gears.surface.load_uncached(constants.wallpapers .. "bg.jpg")
@@ -95,8 +93,7 @@ theme.bar_height = dpi(60)
 -- system tray
 theme.systray_icon_spacing = theme.spacing
 theme.systray_max_rows = 30
-theme.bg_systray = '#ffffff'
-
+theme.bg_systray = "#ffffff"
 
 -- theme.notification_height = dpi(68)
 -- theme.notification_width = dpi(350)
@@ -109,16 +106,26 @@ theme.bg_systray = '#ffffff'
 
 local nc = naughty.config
 nc.defaults.margin = theme.spacing_lg
-nc.defaults.shape = utils.ui.rounded_rect()
+nc.defaults.shape = utils.ui.rounded_rect(utils.ui.dpiSize(20))
 nc.defaults.timeout = 5
-nc.padding = theme.spacing
+
 nc.padding = theme.spacing_xl
-nc.presets.critical.bg = theme.red
-nc.presets.critical.fg = theme.bg_normal
-nc.presets.low.bg = theme.bg_normal
-nc.presets.normal.bg = theme.green
-nc.presets.normal.fg = theme.bg_normal
-nc.spacing = theme.spacing
+nc.defaults.bg = "#00000088"
+nc.defaults.fg = "#f0f0f0"
+nc.defaults.width = utils.ui.dpiSize(380)
+
+nc.defaults.border_width = 2
+nc.defaults.font = "PingFang SC Regular 10"
+nc.defaults.icon_size = utils.ui.dpiSize(35)
+nc.defaults.margin = utils.ui.dpiSize(15)
+-- nc.presets.critical.bg = theme.red
+-- nc.presets.critical.fg = theme.bg_normal
+-- nc.presets.low.bg = theme.bg_normal
+-- nc.presets.normal.bg = theme.green
+-- nc.presets.normal.fg = theme.bg_normal
+
+theme.notification_max_height = utils.ui.dpiSize(80)
+-- theme.notification_max_height = utils.ui.dpiSize(50)
 
 -- ********************************* --
 --
@@ -141,14 +148,12 @@ theme.calendar_bg = theme.bg_normal
 theme.calendar_bg_focus = theme.green
 
 --keymaops hotkeys_bg,awful widget about popup hotkeys
-theme.hotkeys_bg = '#000000'
+theme.hotkeys_bg = "#000000"
 theme.hotkeys_font = "JetBrains Mono Nerd Font Bold 12"
 theme.hotkeys_border_color = "#333333"
 theme.hotkeys_border_width = dpi(2)
 
-
-local gfs = require('gears.filesystem')
+local gfs = require("gears.filesystem")
 theme.cpu_icon = constants.wallpapers .. "/icons/cpu.png"
-
 
 return theme

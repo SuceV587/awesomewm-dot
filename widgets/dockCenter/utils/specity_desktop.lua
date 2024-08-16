@@ -9,13 +9,13 @@ local usal_client_config = {
   'Visual Studio Code',
   'Alacritty',
   'qqmusic',
-  'Termius',
   'Bluetooth Manager',
   'org.gnome.Nautilus',
-  'Files',
+  'Google Chrome',
   'Oracle VM VirtualBox',
   'Spotify',
-  'NxShell'
+  'NxShell',
+  'Files'
 }
 
 local M                  = {

@@ -13,27 +13,17 @@ terminal         = 'alacritty'
 icon_theme       = 'WhiteSur'
 
 all_icon_sizes   = {
+  '512x512',
   '128x128',
   '64x64',
   '96x96',
   '72x72',
   '48x48',
   '36x36',
-  '32x32',
-  '24x24',
-  '22x22',
-  '16x16',
-  '512x512',
 }
 all_icon_types   = {
   '',
   'apps',
-  'actions',
-  'devices',
-  'places',
-  'categories',
-  'status',
-  'mimetypes'
 }
 all_icon_paths   = { '/usr/share/icons/' }
 
@@ -67,6 +57,7 @@ function lookup_icon(arg)
       end
       -- TODO also look in parent icon themes, as in freedesktop.org specification
     end
+    table.insert(icon_theme_paths, '/usr/share/icons/awesome-icons/') -- fallback theme cf spec
     --加入默认的icon目录,hicolor
     table.insert(icon_theme_paths, '/usr/share/icons/hicolor/') -- fallback theme cf spec
 
@@ -82,10 +73,6 @@ function lookup_icon(arg)
         end
       end
     end
-    -- lowest priority fallbacks
-    table.insert(icon_path, '/usr/share/pixmaps/')
-    table.insert(icon_path, '/usr/share/icons/')
-
 
     for i, directory in ipairs(icon_path) do
       if (arg.icon:find('.+%.png') or arg.icon:find('.+%.svg') or arg.icon:find('.+%.xpm')) and file_exists(directory .. arg.icon) then
